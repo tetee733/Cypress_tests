@@ -7,7 +7,7 @@ describe('template spec', () => {
     cy.get('.radius').click()
     cy.get('#flash').contains("You logged into a secure area!")
   })
-  it('test de login invalido', () => {
+  it('test de login invalido 1', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("")
@@ -15,7 +15,7 @@ describe('template spec', () => {
     cy.get('.radius').click()
     cy.get('#flash').contains("You logged into a secure area!")
   })
-  it('test de login invalido', () => {
+  it('test de login invalido 2', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("tomsmith")
@@ -23,7 +23,7 @@ describe('template spec', () => {
     cy.get('.radius').click()
     cy.get('#flash').contains("You logged into a secure area!")
   })
-  it('test de login invalido', () => {
+  it('test de login invalido 3', () => {
     cy.visit('https://the-internet.herokuapp.com/')
     cy.get(':nth-child(21) > a').click()
     cy.get('#username').type("tomsmi")
