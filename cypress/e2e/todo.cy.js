@@ -1,38 +1,34 @@
 
 describe('agregar tareas', () => {
-    it('agregar una tarea a la lista', () => {
+    beforeEach(() => {
+
         cy.visit('https://todomvc.com/examples/react/dist/')
         cy.get(' .new-todo').type('tarea 1{enter}')
+      
+      })
+    it('agregar una tarea a la lista', () => {
         cy.get('[data-testid="todo-item-label"]').contains("tarea 1")
         cy.contains('tarea 1').should('be.visible')
     })
     it('marcar tarea como completada', () => {
-        cy.visit('https://todomvc.com/examples/react/dist/')
-        cy.get(' .new-todo').type('tarea 1{enter}')
         cy.get('[data-testid="todo-item-label"]').contains("tarea 1")
         cy.get('[data-testid="todo-item-toggle"]').click()
         cy.get('[data-testid="todo-item-label"]').should('be.visible')
         
     })
         it('desmarcar tarea completada', () => {
-            cy.visit('https://todomvc.com/examples/react/dist/')
-            cy.get(' .new-todo').type('tarea 1{enter}')
             cy.get('[data-testid="todo-item-label"]').contains("tarea 1")
             cy.get('[data-testid="todo-item-toggle"]').click()
             cy.get('[data-testid="todo-item-toggle"]').click()
             cy.get('[data-testid="todo-item-label"]').should('be.visible')
         })
             it('editar tarea', () => {
-                cy.visit('https://todomvc.com/examples/react/dist/')
-                cy.get(' .new-todo').type('tarea 1{enter}')
                 cy.get('[data-testid="todo-item-label"]').contains("tarea 1")
                 cy.get('[data-testid="todo-item-label"]').dblclick()
                 cy.focused().clear().type("tarea 2{enter}")
                 cy.get('[data-testid="todo-item-label"]').should('be.visible')
             })
             it('borrar una tarea', () => {
-                cy.visit('https://todomvc.com/examples/react/dist/')
-                cy.get(' .new-todo').type('tarea 1{enter}')
                 cy.get('[data-testid="todo-item-label"]').contains("tarea 1")
                 cy.get('button').invoke('show')
                 cy.get('[data-testid="todo-item-button"]').click()
@@ -40,8 +36,6 @@ describe('agregar tareas', () => {
             })
 
             it('filtrar tareas', () => {
-                cy.visit('https://todomvc.com/examples/react/dist/')
-                cy.get(' .new-todo').type('tarea 1{enter}')
                 cy.get('[data-testid="todo-item-label"]').contains("tarea 1")
                 cy.get('[data-testid="todo-item-toggle"]').click()
                 cy.get(' .new-todo').type('tarea 2{enter}')
